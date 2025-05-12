@@ -3,8 +3,8 @@ import React from "react";
 import { useLocation, Link } from "react-router-dom";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import ScholarshipNavbar from "@/components/ScholarshipNavbar";
+import ScholarshipFooter from "@/components/ScholarshipFooter";
 
 const NotFound = () => {
   const location = useLocation();
@@ -18,7 +18,7 @@ const NotFound = () => {
 
   return (
     <div className="min-h-screen flex flex-col font-outfit">
-      <Navbar />
+      <ScholarshipNavbar />
       
       <div className="flex-grow flex items-center justify-center">
         <div className="text-center px-4">
@@ -29,14 +29,14 @@ const NotFound = () => {
             temporarily unavailable.
           </p>
           <Link to="/">
-            <Button className="bg-black text-white hover:bg-gray-800 px-6 py-2">
+            <Button className="bg-blue-600 text-white hover:bg-blue-700 px-6 py-2">
               Return to Home
             </Button>
           </Link>
         </div>
       </div>
       
-      <Footer />
+      <ScholarshipFooter />
     </div>
   );
 };
