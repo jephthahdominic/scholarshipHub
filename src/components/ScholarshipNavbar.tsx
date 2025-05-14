@@ -41,7 +41,7 @@ const ScholarshipNavbar = () => {
           <NavLink to="/" className={({isActive})=> isActive ? "text-gray-700":"text-gray-400 hover:text-blue-600 transition-colors"}>Home</NavLink>
           <NavLink to="/scholarships" className={({isActive})=> isActive ? "text-gray-700":"text-gray-400 hover:text-blue-600 transition-colors"}>Scholarships</NavLink>
           {authStatus == "authenticated" && <NavLink to="/dashboard" className={({isActive})=> isActive ? "text-gray-700":"text-gray-400 hover:text-blue-600 transition-colors"}>Dashboard</NavLink>}
-          {isConnected || storedAddress && <NavLink to={'/wallet'} className={({isActive})=> isActive ? "text-gray-700":"text-gray-400 hover:text-blue-600 transition-colors"}>Wallet</NavLink>}
+          {!storedAddress ? <div></div> : <NavLink to={'/wallet'} className={({isActive})=> isActive ? "text-gray-700":"text-gray-400 hover:text-blue-600 transition-colors"}>Wallet</NavLink>}
           
         </div>
           <div className="flex items-center space-x-4">
