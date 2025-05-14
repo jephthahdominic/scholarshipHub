@@ -1,5 +1,6 @@
-
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useState, useEffect, useLayoutEffect } from "react";
+import {userHasWallet} from "@civic/auth-web3"
+import { useUser, useWallet } from "@civic/auth-web3/react";
 
 interface User {
   id: string;
@@ -27,17 +28,22 @@ export const useAuth = () => {
 };
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-  const [currentUser, setCurrentUser] = useState<User | null>(null);
+  const [currentUser, setCurrentUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const {user} = useUser();
+  console.log(user)
 
   useEffect(() => {
     // Check if user is stored in localStorage
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      setCurrentUser(JSON.parse(storedUser));
+    // const storedUser = localStorage.getItem("user");
+    // if (storedUser) {
+    //   setCurrentUser(JSON.parse(storedUser));
+    // }
+    if(user) {
+      setCurrentUser(user)
+      setIsLoading(false);
     }
-    setIsLoading(false);
-  }, []);
+  }, [user]);
 
   const login = async (email: string, password: string) => {
     // Mock login for now - in a real app, this would call your backend

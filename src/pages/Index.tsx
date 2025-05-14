@@ -5,6 +5,7 @@ import ScholarshipFooter from '@/components/ScholarshipFooter';
 import { Button } from '@/components/ui/button';
 import { GraduationCap, Search, Award, DollarSign } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { UserButton } from '@civic/auth/react';
 
 const Index = () => {
   return (
@@ -19,18 +20,13 @@ const Index = () => {
             Discover Your Perfect Scholarship
           </h1>
           <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
-            Connect with thousands of scholarships and grants to fund your education and achieve your academic dreams.
+            Connect with thousands of scholarships and grants to fund your education with crypto or fiat and achieve your academic dreams.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/scholarships">
               <Button size="lg" className="bg-white text-blue-700 hover:bg-gray-100">
                 <Search size={18} className="mr-2" />
                 Browse Scholarships
-              </Button>
-            </Link>
-            <Link to="/register">
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-blue-800">
-                Create Account
               </Button>
             </Link>
           </div>
@@ -59,7 +55,9 @@ const Index = () => {
               </div>
               <h3 className="text-xl font-semibold mb-3">Apply with Ease</h3>
               <p className="text-gray-600">
-                Create a single profile that can be used to apply for multiple scholarships, saving you time and effort.
+                {/* Create a single profile that can be used to apply for multiple scholarships, saving you time and effort. */}
+                Create a profile with ease by clicking the <a href='#navbar' className='text-blue-600'>Sign in</a> button, once done you immediately get a wallet through which you can recieve
+                schorlaship funds or grants as crypto tokens from reputable institutions.
               </p>
             </div>
             
@@ -67,7 +65,7 @@ const Index = () => {
               <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <DollarSign size={24} className="text-blue-600" />
               </div>
-              <h3 className="text-xl font-semibold mb-3">Get Funded</h3>
+              <h3 className="text-xl font-semibold mb-3">Get Funded Through Cryptocurrencies or FIAT</h3>
               <p className="text-gray-600">
                 Track your applications and receive notifications when you've been selected for a scholarship or grant.
               </p>
@@ -83,11 +81,11 @@ const Index = () => {
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
             Join thousands of students who have successfully funded their education through ScholarHub.
           </p>
-          <Link to="/register">
+          <a href="#navbar">
             <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white">
               Create Free Account
             </Button>
-          </Link>
+          </a>
         </div>
       </div>
       

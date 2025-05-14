@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ScholarshipNavbar from '@/components/ScholarshipNavbar';
 import ScholarshipFooter from '@/components/ScholarshipFooter';
@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { scholarships } from '@/data/scholarshipData';
 import { CalendarCheck, Book, FileText, Award, CheckCircle, Clock } from 'lucide-react';
+import { useUser } from '@civic/auth/react';
 
 const mockApplications = [
   {
@@ -25,7 +26,7 @@ const mockApplications = [
 ];
 
 const Dashboard = () => {
-  const { currentUser } = useAuth();
+  const {currentUser, isLoading} = useAuth();
   
   // Match applications with their scholarships
   const userApplications = mockApplications.map(app => {
@@ -41,6 +42,13 @@ const Dashboard = () => {
   const recommendedScholarships = scholarships
     .filter(s => !appliedScholarshipIds.includes(s.id))
     .slice(0, 3);
+
+    if(isLoading){
+      return <div>
+        <ScholarshipNavbar />
+        <div>Loading...</div>
+      </div>
+    }
 
   return (
     <div className="min-h-screen flex flex-col font-outfit">
