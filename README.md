@@ -27,9 +27,13 @@ Authentication: Civic Pass
 🧠 Personalized Recommendations – Get tailored opportunities based on user profile and eligibility.
 
 ## 📦 Getting Started
+
 Prerequisites
+
 Node.js v18+
+
 npm or yarn
+
 MetaMask (or any EVM-compatible wallet extension)
 
 **Installation**
