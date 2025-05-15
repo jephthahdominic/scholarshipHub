@@ -51,16 +51,24 @@ npm run dev
 This app uses Civic for decentralized identity verification. To test this locally:
 
 Go to Civic's Developer Portal - https://www.civic.com/
+
 Read civic docs - https://docs.civic.com/
 
 ## 🧩 Project Structure 
 bash
 
 src/
+
 ├── components/        # Reusable UI components (shadcn/ui)
+
 ├── pages/             # Page-level components
+
 ├── hooks/             # Custom React hooks (e.g. for wagmi, civic)
+
 ├── context/           # Global context (user auth, wallet state)
+
 ├── lib/               # Utility functions
+
 ├── data/              # Static data or mocks
+
 └── App.tsx            # Main App component
