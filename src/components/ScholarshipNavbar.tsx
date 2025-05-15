@@ -48,7 +48,12 @@ const ScholarshipNavbar = () => {
             {/* <UserButton /> */}
             {authStatus == "authenticated" ? (
               <div className="flex items-center gap-3">
-                {!isConnected && !storedAddress && <button onClick={()=>connectWallet()} className="rounded-full px-3 py-3 border border-purple-600 text-purple-600 hover:cursor-pointer">Connect Wallet</button>}
+                {!isConnected && !storedAddress ? (
+                  <button onClick={()=>connectWallet()} className="rounded-full px-3 py-3 border border-purple-600 text-purple-600 hover:cursor-pointer">
+                    Connect Wallet
+                  </button>):(
+                    <button>Wallet</button>
+                  )}
                 <UserButton
                   style={{
                     border: "1px solid #1259ff ",
