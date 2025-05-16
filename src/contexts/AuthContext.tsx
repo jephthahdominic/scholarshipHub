@@ -31,7 +31,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const {user} = useUser();
+  const userContext = useUser()
   console.log(user)
+  console.log(userContext)
 
   useEffect(() => {
     // Check if user is stored in localStorage

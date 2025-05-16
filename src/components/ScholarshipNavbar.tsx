@@ -6,6 +6,8 @@ import { toast } from "sonner";
 import {SignInButton, SignOutButton , UserButton, useUser } from "@civic/auth/react";
 import { useWallet } from "@/contexts/WalletContext";
 import { useAccount } from "wagmi";
+import { Wallet } from "@/pages/Wallet";
+
 
 const ScholarshipNavbar = () => {
   const { currentUser, logout, isAuthenticated } = useAuth();
@@ -48,12 +50,13 @@ const ScholarshipNavbar = () => {
             {/* <UserButton /> */}
             {authStatus == "authenticated" ? (
               <div className="flex items-center gap-3">
-                {!isConnected && !storedAddress ? (
+                {/* {!isConnected && !storedAddress ? (
                   <button onClick={()=>connectWallet()} className="rounded-full px-3 py-3 border border-purple-600 text-purple-600 hover:cursor-pointer">
                     Connect Wallet
                   </button>):(
-                    <button>Wallet</button>
-                  )}
+                  <button>Wallet</button>
+                )} */}
+                <button>Wallet</button>
                 <UserButton
                   style={{
                     border: "1px solid #1259ff ",
@@ -78,6 +81,7 @@ const ScholarshipNavbar = () => {
             
           </div>
       </div>
+      <Wallet />
     </nav>
   );
 };

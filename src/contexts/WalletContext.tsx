@@ -10,10 +10,11 @@ import { embeddedWallet } from "@civic/auth-web3/wagmi";
 const WalletContext = createContext(undefined);
 
 type ExistingWeb3UserContext = UserContextType & {
-  ethereum: string,
-  wallet: WalletClient
+  ethereum: {
+      address: string // the address of the embedded wallet
+      wallet: WalletClient // a Viem WalletClient
+  } 
 }
-
 
 export const config = createConfig({
   chains: [mainnet, sepolia],
@@ -54,12 +55,11 @@ export function WalletProvider({ children }: { children: React.ReactNode }){
   const storedAddress = sessionStorage.getItem("walletAddress");
   console.log(storedAddress)
 
-    return(
-        <WalletContext.Provider value={{userContext, connectWallet, isConnecting, storedAddress}}>
-          {children}
-        </WalletContext.Provider>
-    )
-          
+  return(
+    <WalletContext.Provider value={{userContext, connectWallet, isConnecting, storedAddress}}>
+      {children}
+    </WalletContext.Provider>
+  )     
 }
 
 export function useWallet(){

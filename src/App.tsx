@@ -20,6 +20,7 @@ import { CivicAuthProvider, useWallet } from "@civic/auth-web3/react";
 import {config, WalletProvider} from "./contexts/WalletContext"
 import { mainnet } from "viem/chains";
 import { useEffect } from "react";
+import { SolanaProvider } from "./contexts/SolanaProvider";
 
 
 const queryClient = new QueryClient();
@@ -34,23 +35,25 @@ const App = () => {
         <CivicAuthProvider clientId="629db8bd-68fc-4919-8563-4901b766e6e1" initialChain={mainnet}>
           <AuthProvider>
             <WalletProvider>
-              <TooltipProvider>
-                <Toaster />
-                <Sonner />
-                <BrowserRouter>
-                  <Routes>
-                    <Route path="/" element={<Index />} />
-                    <Route path="/scholarships" element={<Scholarships />} />
-                    <Route path="/scholarships/:id" element={<ScholarshipDetail />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/register" element={<Register />} />
-                    <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
-                    <Route path="/apply/:id" element={<ProtectedRoute><Apply /></ProtectedRoute>} />
-                    {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-                    <Route path="*" element={<NotFound />} />
-                  </Routes>
-                </BrowserRouter>
-              </TooltipProvider>
+              <SolanaProvider>
+                <TooltipProvider>
+                  <Toaster />
+                  <Sonner />
+                  <BrowserRouter>
+                    <Routes>
+                      <Route path="/" element={<Index />} />
+                      <Route path="/scholarships" element={<Scholarships />} />
+                      <Route path="/scholarships/:id" element={<ScholarshipDetail />} />
+                      <Route path="/login" element={<Login />} />
+                      <Route path="/register" element={<Register />} />
+                      <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+                      <Route path="/apply/:id" element={<ProtectedRoute><Apply /></ProtectedRoute>} />
+                      {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                      <Route path="*" element={<NotFound />} />
+                    </Routes>
+                  </BrowserRouter>
+                </TooltipProvider>
+              </SolanaProvider>
             </WalletProvider>
           </AuthProvider>
         </CivicAuthProvider>
